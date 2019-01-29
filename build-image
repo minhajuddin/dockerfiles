@@ -26,4 +26,8 @@ image_name="${dockerfile//Dockerfile./}" # => ruby-2.6
 image_tag="$(git rev-parse --short HEAD)" # => 69d0ae3
 
 echo "Building a docker image '$image_name:$image_tag' using the dockerfile at $dockerfile"
-docker build --file "$dockerfile" --tag "$image_name:$image_tag" .
+docker build \
+  --file "$dockerfile" \
+  --tag "$image_name:$image_tag" \
+  --tag "$image_name:latest" \
+  .
